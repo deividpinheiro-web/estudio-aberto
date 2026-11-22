@@ -10,7 +10,7 @@ export default function Player({ p, list }) {
     <div className="player" role="region" aria-label="Player de áudio">
       <div className="pl">
         <div className="now">
-          <div className="thumb" style={{ background: a ? a.grad : undefined }} />
+          <div className="thumb" style={{ background: a ? `url(${import.meta.env.BASE_URL}${a.photo}) center/cover, ${a.grad}` : undefined }} />
           <div><b>{a ? a.track : 'Escolha uma faixa'}</b><small>{a ? `${a.name} • ${a.origin}` : 'Estúdio Aberto'}</small></div>
         </div>
         <div className="ctrl">

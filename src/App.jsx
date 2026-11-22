@@ -30,6 +30,7 @@ function Modal({ a, onClose }) {
     <div className="overlay open" onClick={e => e.target === e.currentTarget && onClose()}>
       <div className="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
         <button className="close" autoFocus onClick={onClose} aria-label="Fechar">✕</button>
+        {a.photo && <img className="m-photo" src={import.meta.env.BASE_URL + a.photo} alt={'Foto de ' + a.name} />}
         <h3 id="mTitle">{a.name}</h3><div className="sub">{a.track} • {a.origin}</div>
         <h4>Bio</h4><p>{a.bio}</p>
         <h4>Letra</h4><p className="lyrics">{a.lyrics}</p>
@@ -121,7 +122,7 @@ export default function App() {
               return (
                 <article key={a.name} className={'card' + (on ? ' playing' : '')}>
                   <div className="art" style={{ background: a.grad }}>
-                    <span aria-hidden="true">{a.name.slice(0, 2)}</span>
+                    {a.photo ? <img src={import.meta.env.BASE_URL + a.photo} alt={'Foto de ' + a.name} loading="lazy" /> : <span aria-hidden="true">{a.name.slice(0, 2)}</span>}
                     <div className="eq" aria-hidden="true"><i /><i /><i /><i /></div>
                   </div>
                   <div className="info">
