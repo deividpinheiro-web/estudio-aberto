@@ -43,7 +43,10 @@ function Modal({ a, onClose }) {
         <h4>Bio</h4>
         {(a.realName || a.birth) && <p className="real">{[a.realName && 'Nome verdadeiro: ' + a.realName, a.birth && ageOf(a.birth) + ' anos'].filter(Boolean).join(' • ')}</p>}
         <p>{a.bio}</p>
-        <h4>Letra</h4><p className="lyrics">{a.lyrics}</p>
+        <h4>Letra</h4>
+        {a.lyricsUrl
+          ? <p><a className="link" href={a.lyricsUrl} target="_blank" rel="noopener noreferrer">Ler a letra completa no Letras.mus.br</a></p>
+          : <p className="lyrics">{a.lyrics}</p>}
       </div>
     </div>
   )
