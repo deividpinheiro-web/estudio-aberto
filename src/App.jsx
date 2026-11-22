@@ -19,6 +19,14 @@ const STOPS = [
   ['Mês 4', 'Zona Leste (Cidade Tiradentes)', 'Centro de Formação Cultural', 'Em breve', '']
 ]
 
+// Idade calculada a partir da data de nascimento (não fica desatualizada)
+const ageOf = iso => {
+  const [y, m, d] = iso.split('-').map(Number), n = new Date()
+  let r = n.getFullYear() - y
+  if (n.getMonth() + 1 < m || (n.getMonth() + 1 === m && n.getDate() < d)) r--
+  return r
+}
+
 // Modal com bio e letra; fecha com Esc ou clique fora
 function Modal({ a, onClose }) {
   useEffect(() => {
@@ -32,7 +40,9 @@ function Modal({ a, onClose }) {
         <button className="close" autoFocus onClick={onClose} aria-label="Fechar">✕</button>
         {a.photo && <img className="m-photo" src={import.meta.env.BASE_URL + a.photo} alt={'Foto de ' + a.name} />}
         <h3 id="mTitle">{a.name}</h3><div className="sub">{a.track} • {a.origin}</div>
-        <h4>Bio</h4><p>{a.bio}</p>
+        <h4>Bio</h4>
+        {(a.realName || a.birth) && <p className="real">{[a.realName && 'Nome verdadeiro: ' + a.realName, a.birth && ageOf(a.birth) + ' anos'].filter(Boolean).join(' • ')}</p>}
+        <p>{a.bio}</p>
         <h4>Letra</h4><p className="lyrics">{a.lyrics}</p>
       </div>
     </div>
