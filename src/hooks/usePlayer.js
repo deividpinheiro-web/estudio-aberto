@@ -12,7 +12,7 @@ export function usePlayer(list) {
 
   useEffect(() => { if (ref.current) ref.current.volume = vol }, [vol])
 
-  const load = i => { setCur(i); setError(''); ref.current.src = list[i].audio }
+  const load = i => { setCur(i); setError(''); ref.current.src = /^https?:/.test(list[i].audio) ? list[i].audio : import.meta.env.BASE_URL + list[i].audio }
   const play = () => ref.current.play().catch(() => setError('Não foi possível tocar o áudio. Verifique sua conexão.'))
   const toggle = i => { if (i !== cur) { load(i); play() } else if (playing) ref.current.pause(); else play() }
   const step = d => { load(cur < 0 ? 0 : (cur + d + list.length) % list.length); play() }
