@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ARTISTS, GENRES } from './data.js'
 import { usePlayer } from './hooks/usePlayer.js'
 import { usePersisted } from './hooks/usePersisted.js'
@@ -9,7 +9,7 @@ const NAV = [['projeto', 'O Projeto'], ['artistas', 'Artistas & Faixas'], ['rote
 const STATS = [['20 Artistas', 'Gravados por edição'], ['4 Regiões', 'ZL, ZS, ZN e Baixada/ZO'], ['100% Gratuito', 'Acesso democratizado'], ['40k+ Plays', 'Alcance comunitário']]
 const PILLARS = [
   ['🚐', 'Estúdio Itinerante', 'Unidade móvel equipada que chega aos centros culturais e escolas públicas, com cabine de gravação tratada e equipe técnica.'],
-  ['🎚️', 'Produção & Selo Digital', 'Gravação de faixa autoral, orientação sobre direitos autorais (ECAD/UBC) e lançamento no Spotify e no YouTube.'],
+  ['🎛️', 'Produção & Selo Digital', 'Gravação de faixa autoral, orientação sobre direitos autorais (ECAD/UBC) e lançamento no Spotify e no YouTube.'],
   ['🎤', 'Festival de Encerramento', 'Show gratuito ao ar livre reunindo na comunidade todos os artistas gravados.']
 ]
 const STOPS = [
@@ -19,7 +19,6 @@ const STOPS = [
   ['Mês 4', 'Zona Leste (Cidade Tiradentes)', 'Centro de Formação Cultural', 'Em breve', '']
 ]
 
-// Idade calculada a partir da data de nascimento (não fica desatualizada)
 const ageOf = iso => {
   const [y, m, d] = iso.split('-').map(Number), n = new Date()
   let r = n.getFullYear() - y
@@ -27,7 +26,6 @@ const ageOf = iso => {
   return r
 }
 
-// Modal com bio e letra; fecha com Esc ou clique fora
 function Modal({ a, onClose }) {
   useEffect(() => {
     const h = e => e.key === 'Escape' && onClose()
@@ -142,7 +140,7 @@ export default function App() {
                     <h3>{a.name}</h3><div className="trk">{a.track}</div>
                     <div className="meta">{a.origin} • {a.dur}</div><span className="genre">{a.genre}</span>
                     <div className="row">
-                      <button className="play" onClick={() => player.toggle(i)} aria-label={(on ? 'Pausar ' : 'Tocar ') + a.track}>{on ? '❚❚' : '▶'}</button>
+                      <button className="play" onClick={() => player.toggle(i)} aria-label={(on ? 'Pausar ' : 'Tocar ') + a.track}>{on ? '⏸' : '▶'}</button>
                       <button className="link" onClick={() => setModal(a)}>Ver Letra &amp; Bio</button>
                       <a className="link" href={a.link} target="_blank" rel="noopener noreferrer">Ouvir no Spotify</a>
                       <button className="fav" aria-pressed={favs.includes(a.name)} onClick={() => toggleFav(a.name)} aria-label={'Favoritar ' + a.name}>♥</button>
@@ -196,4 +194,3 @@ export default function App() {
     </>
   )
 }
-
