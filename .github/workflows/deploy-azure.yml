@@ -1,4 +1,4 @@
-# Publica o site (HTML/CSS/JS) + a API (PHP) no Azure App Service a cada push na branch main.
+# Publica o site (HTML/CSS/JS) no Azure App Service a cada push na branch main.
 name: Deploy Azure
 on:
   push:
@@ -11,13 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Montar o pacote (site + API)
+      - name: Montar o pacote do site
         run: |
           mkdir pacote
           cp index.html script.js style.css icone.ico pacote/
-          cp -r audio img api pacote/
-          # o banco local e senhas nunca vão para o servidor
-          rm -rf pacote/api/data pacote/api/config.local.php
+          cp -r audio img pacote/
 
       - name: Publicar no Azure App Service
         uses: azure/webapps-deploy@v3
