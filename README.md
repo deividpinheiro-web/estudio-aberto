@@ -1,63 +1,64 @@
 # Estúdio Aberto — Som da Quebrada
 
-Site do projeto cultural **Estúdio Aberto**: um estúdio móvel comunitário e gratuito que percorre bairros periféricos para gravar, mixar e distribuir artistas independentes de trap e rap nacional.
+Sistema web do projeto cultural **Estúdio Aberto**: um estúdio móvel comunitário e gratuito que percorre bairros
+periféricos para gravar, mixar e distribuir artistas independentes de trap e rap nacional.
+
+O site apresenta o projeto, os artistas e o roteiro do estúdio, e **recebe as inscrições dos artistas**, que ficam
+guardadas em um banco de dados e são avaliadas por um painel administrativo.
+
+## Demanda real
+[Explique em 2 ou 3 frases quem usa e o problema que isso resolve. Ex.: hoje as demos chegam por mensagens
+soltas; agora ficam organizadas com protocolo, status e contato.]
 
 ## Tecnologias escolhidas
 
 | Escolha | Por quê |
 |---|---|
-| **JavaScript (ES2022)** | Linguagem padrão da web, roda em qualquer navegador e tem a maior comunidade de ajuda. |
-| **React 18** | Componentes reutilizáveis (Player, Formulário, Cards) e estado reativo, o que deixa o player sincronizado com os cards sem manipular o DOM na mão. |
-| **Vite 5** | Servidor de desenvolvimento instantâneo e build otimizado para publicação. |
-| **GitHub + GitHub Actions + Pages** | Versionamento do código e publicação automática a cada push na `main`. |
+| **HTML, CSS e JavaScript** | Site leve, acessível (alto contraste e ajuste de fonte) e sem etapa de build. |
+| **PHP 8.4** | Recebe o formulário de inscrição, valida no servidor e oferece o painel administrativo. |
+| **MySQL (Azure Database for MySQL)** | Guarda as inscrições. No computador de cada pessoa do grupo usa SQLite, sem instalar nada. |
+| **Azure App Service (Linux)** | Hospedagem em nuvem do site e da API. |
+| **GitHub + GitHub Actions** | Versionamento e publicação automática no Azure a cada push na `main`. |
 
-## Como rodar
-
-Requer [Node.js 18+](https://nodejs.org).
-
-```bash
-npm install
-npm run dev      # abre em http://localhost:5173
-npm run build    # gera a pasta dist/ para publicação
-```
+## Funcionalidades
+- Catálogo de artistas com player de áudio.
+- Formulário "Inscreva seu Som" com validação no navegador e no servidor, protocolo real (`#EA-2026-001`) e limite de envios por IP.
+- Painel administrativo (`/api/admin.php`): filtro por status, observação interna, link da demo, WhatsApp e exportação em CSV.
+- Acessibilidade: tamanho de fonte e alto contraste.
 
 ## Estrutura
-
 ```
-src/
-  App.jsx                  página, catálogo, roteiro, modal
-  data.js                  artistas, faixas, letras e bios
-  styles.css               identidade visual (dark mode + alto contraste)
-  hooks/usePlayer.js       lógica do player de áudio
-  hooks/usePersisted.js    estado salvo no localStorage
-  components/Player.jsx    barra de player fixa
-  components/SignupForm.jsx formulário com validação e protocolo
-.github/workflows/deploy.yml  publicação no GitHub Pages
+index.html, style.css, script.js   site
+audio/, img/                       trechos de áudio e fotos dos artistas
+api/                               PHP: inscrever.php (formulário), admin.php (painel), db.php, config.php, schemas
+docs/AZURE.md                      passo a passo de publicação no Azure
+.github/workflows/deploy-azure.yml publicação automática
+src/, public/, vite.config.js      experimento anterior em React (não faz parte da versão publicada)
 ```
 
-## Reaproveitamento e melhorias
+## Como rodar no seu computador
+Precisa de PHP 8+ com as extensões `mbstring`, `pdo_sqlite` e `sqlite3` ativas. Na pasta do projeto:
 
-A **versão 1** foi um protótipo em um único `index.html` (HTML + CSS + JS puro). Na **versão 2** o projeto foi reaproveitado e melhorado:
+    php -S localhost:8000
 
-- Identidade visual, textos e dados dos artistas mantidos (`styles.css` e `data.js` vêm da v1).
-- Código reorganizado em componentes React e hooks.
-- **Novo:** busca por artista, faixa ou bairro.
-- **Novo:** favoritos salvos no navegador (filtro "Só favoritos").
-- **Novo:** preferências de acessibilidade (tamanho da fonte e alto contraste) lembradas entre visitas.
-- **Novo:** avanço automático para a próxima faixa e mensagem de erro de áudio.
-- **Novo:** publicação automática no GitHub Pages.
+- Site: http://localhost:8000/
+- Painel: http://localhost:8000/api/admin.php
 
-## Publicar no GitHub
+O banco local (`api/data/estudio_aberto.db`) é criado sozinho no primeiro envio.
 
-```bash
-git remote add origin https://github.com/SEU-USUARIO/estudio-aberto.git
-git push -u origin main
-```
+Para ativar o painel, gere o hash da senha e crie `api/config.local.php` (ele não vai para o GitHub):
 
-Depois, no repositório: **Settings → Pages → Source: GitHub Actions**. O site fica em `https://SEU-USUARIO.github.io/estudio-aberto/`.
+    php -r "echo password_hash(SUA_SENHA, PASSWORD_DEFAULT);"
+
+    <?php return [admin_hash => COLE_O_HASH_AQUI, ip_salt => uma-frase-qualquer];
+
+## Publicar
+Veja [docs/AZURE.md](docs/AZURE.md).
+
+## Endereço do sistema
+https://[NOME-DO-APP].azurewebsites.net
 
 ## Equipe
-
 Preencha com os nomes do grupo.
 
-> Protótipo de plataforma cultural. Faixas de áudio demonstrativas livres de direitos autorais.
+> Faixas de áudio e imagens: use apenas material que o grupo tem autorização para publicar.

@@ -1,16 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Estúdio Aberto — Som da Quebrada</title>
-<meta name="description" content="Estúdio móvel gratuito que grava, mixa e distribui artistas independentes de trap e rap nas periferias.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
+  <title>Estúdio Aberto — Som da Quebrada</title>
+  <meta name="description" content="Estúdio móvel gratuito que grava, mixa e distribui artistas independentes de trap e rap nas periferias.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Importação do arquivo CSS externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="root"></div>
-<script type="module" src="/src/main.jsx"></script>
+  <a class="skip" href="#projeto">Pular para o conteúdo</a>
+
+  <!-- ===== BARRA DE ACESSIBILIDADE ===== -->
+  <div class="access" role="region" aria-label="Acessibilidade">
+    <div class="wrap">
+      <span>Acessibilidade</span>
+      <button id="fontUp" aria-label="Aumentar tamanho da fonte">A+</button>
+      <button id="fontDown" aria-label="Diminuir tamanho da fonte">A-</button>
+      <button id="contrast" aria-pressed="false">Alto Contraste</button>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="top">
+    <div class="wrap">
+      <a href="#inicio" class="logo" aria-label="Estúdio Aberto, início">
+        <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>ESTÚDIO ABERTO
+      </a>
+      <nav id="nav" aria-label="Principal">
+        <ul>
+          <li><a href="#projeto">O Projeto</a></li>
+          <li><a href="#artistas">Artistas &amp; Faixas</a></li>
+          <li><a href="#roteiro">Roteiro Móvel</a></li>
+          <li><a href="#inscricao">Inscreva seu Som</a></li>
+        </ul>
+      </nav>
+      <a href="#inscricao" class="btn solid cta-top">Enviar Demo</a>
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">☰</button>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="tag">PROJETO CULTURAL • 100% GRATUITO</span>
+        <h1>Sua voz merece estúdio. O trap da quebrada sem barreiras.</h1>
+        <p class="lead">Estúdio móvel itinerante com gravação profissional, mixagem, masterização e distribuição digital gratuita nas plataformas para artistas independentes.</p>
+        <div class="actions">
+          <a href="#artistas" class="btn solid">▶ Ouvir Lançamentos</a>
+          <a href="#inscricao" class="btn">Agendar Gravação</a>
+        </div>
+        <div class="stats">
+          <div class="card stat"><b>20 Artistas</b><small>Gravados por edição</small></div>
+          <div class="card stat"><b>4 Regiões</b><small>ZL, ZS, ZN e Baixada/ZO</small></div>
+          <div class="card stat"><b>100% Gratuito</b><small>Acesso democratizado</small></div>
+          <div class="card stat"><b>40k+ Plays</b><small>Alcance comunitário</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== O PROJETO ===== -->
+    <section id="projeto">
+      <div class="wrap">
+        <h2 class="sec-title">Como o Estúdio Aberto funciona</h2>
+        <p class="sec-sub">Do beat ao streaming, o estúdio vai até o artista. Sem taxa, sem intermediário e com orientação em cada etapa.</p>
+        <div class="grid3">
+          <article class="card pillar">
+            <div class="ico" aria-hidden="true">🚐</div>
+            <h3>Estúdio Itinerante</h3>
+            <p>Unidade móvel equipada que chega aos centros culturais e escolas públicas, com cabine de gravação tratada e equipe técnica.</p>
+          </article>
+          <article class="card pillar">
+            <div class="ico" aria-hidden="true">🎚️</div>
+            <h3>Produção &amp; Selo Digital</h3>
+            <p>Gravação de faixa autoral, orientação sobre direitos autorais (ECAD/UBC) e lançamento no Spotify e no YouTube.</p>
+          </article>
+          <article class="card pillar">
+            <div class="ico" aria-hidden="true">🎤</div>
+            <h3>Festival de Encerramento</h3>
+            <p>Show gratuito ao ar livre reunindo na comunidade todos os artistas gravados.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATÁLOGO ===== -->
+    <section id="artistas">
+      <div class="wrap">
+        <h2 class="sec-title">Artistas &amp; Lançamentos</h2>
+        <p class="sec-sub">Aperte o play, leia a letra e conheça a história de quem saiu da quebrada para o mundo.</p>
+        <div class="filters" id="filters" role="group" aria-label="Filtrar por subgênero"></div>
+        <!-- Os cards com imagens locais (img/...) e áudio (audio/...) serão renderizados aqui via script.js -->
+        <div class="catalog" id="catalog" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===== ROTEIRO ===== -->
+    <section id="roteiro">
+      <div class="wrap">
+        <h2 class="sec-title">Roteiro do Estúdio Móvel</h2>
+        <p class="sec-sub">Quatro paradas, quatro regiões. A vaga aberta agora é na Zona Norte.</p>
+        <div class="timeline">
+          <article class="card stop live"><div class="mes">Mês 1</div><h3>Zona Oeste</h3><p>Centro Cultural Municipal</p><span class="status">Em andamento • Vagas Abertas</span></article>
+          <article class="card stop live"><div class="mes">Mês 2</div><h3>Zona Sul</h3><p>Casa da Cultura</p><span class="status">Em andamento • Vagas Abertas</span></article>
+          <article class="card stop live"><div class="mes">Mês 3</div><h3>Zona Norte</h3><p>Fábrica de Cultura</p><span class="status">Em andamento • Vagas Abertas</span></article>
+          <article class="card stop"><div class="mes">Mês 4</div><h3>Zona Leste</h3><p>Centro de Formação Cultural</p><span class="status">Em breve</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INSCRIÇÃO ===== -->
+    <section id="inscricao">
+      <div class="wrap">
+        <h2 class="sec-title">Inscreva seu Som</h2>
+        <p class="sec-sub">Preencha o formulário, envie o link da sua demo e a equipe chama você no WhatsApp.</p>
+        <div class="form-box">
+          <div>
+            <form id="form" class="card" novalidate>
+              <label>Nome artístico / vulgo<input name="nome" required minlength="2" autocomplete="nickname"><span class="err"></span></label>
+              <label>Bairro / região<input name="bairro" required><span class="err"></span></label>
+              <label>Subgênero
+                <select name="genero" required>
+                  <option value="">Selecione</option><option>Trap</option><option>Plugg</option><option>Drill</option><option>Boombap</option><option>R&amp;B</option><option>Funk</option>
+                </select><span class="err"></span>
+              </label>
+              <label>Link da demo (SoundCloud, YouTube ou Google Drive)<input name="demo" type="url" placeholder="https://" required><span class="err"></span></label>
+              <label>WhatsApp<input name="zap" type="tel" inputmode="numeric" placeholder="(11) 90000-0000" required><span class="err"></span></label>
+              <label>Sua história (release)<textarea name="historia" required minlength="20"></textarea><span class="err"></span></label>
+              <button class="btn solid" type="submit">Enviar inscrição</button>
+            </form>
+            <div id="success" class="card success hidden" role="status" tabindex="-1">
+              <h3>Inscrição recebida!</h3>
+              <div class="proto" id="proto"></div>
+              <p>Guarde esse número. Entramos em contato pelo WhatsApp para combinar a data da gravação.</p>
+              <button class="btn" id="again" style="margin-top:1rem">Fazer nova inscrição</button>
+            </div>
+          </div>
+          <aside class="side">
+            <p>Como funciona depois do envio:</p>
+            <ul>
+              <li>Ouvimos todas as demos enviadas, sem custo de inscrição.</li>
+              <li>Você recebe a data da sessão na parada mais próxima.</li>
+              <li>Grava, recebe a mixagem e a masterização e lança nas plataformas.</li>
+              <li>Seu release e seus direitos autorais ficam com você.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div><h4>Estúdio Aberto — Som da Quebrada</h4><p>Projeto cultural gratuito que leva gravação, mixagem, masterização e distribuição digital a artistas independentes de trap e rap nas periferias.</p></div>
+        <div><h4>Transparência</h4><button class="btn" id="pdf">⬇ Guia do Artista Independente (PDF)</button></div>
+        <div><h4>Apoio e incentivo</h4><div class="seals"><span class="seal">Lei de Incentivo</span><span class="seal">Apoio cultural</span><span class="seal">Parceiros</span></div></div>
+      </div>
+      <p class="note">Protótipo de plataforma cultural. Faixas de áudio demonstrativas livres de direitos autorais.</p>
+    </div>
+  </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="overlay" id="overlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+      <button class="close" id="mClose" aria-label="Fechar">✕</button>
+      <!-- Imagem local do artista no modal -->
+      <img class="m-photo" id="mPhoto" src="" alt="" loading="lazy">
+      <h3 id="mTitle"></h3>
+      <div class="sub" id="mSub"></div>
+      <h4>Bio</h4>
+      <p class="real" id="mReal"></p>
+      <p id="mBio"></p>
+      <h4>Letra</h4>
+      <p class="lyrics" id="mLyrics"></p>
+    </div>
+  </div>
+
+  <!-- ===== PLAYER FIXO ===== -->
+  <div class="player" role="region" aria-label="Player de áudio">
+    <div class="pl">
+      <div class="now">
+        <!-- Miniatura da foto do artista na barra do player -->
+        <img class="thumb" id="pThumb" src="" alt="" loading="lazy">
+        <div><b id="pTitle">Escolha uma faixa</b><small id="pArtist">Estúdio Aberto</small></div>
+      </div>
+      <div class="ctrl">
+        <div class="btns">
+          <button id="prev" aria-label="Faixa anterior">⏮</button>
+          <button id="pPlay" class="play" aria-label="Tocar">▶</button>
+          <button id="next" aria-label="Próxima faixa">⏭</button>
+        </div>
+        <div class="bar">
+          <span id="cur">00:00</span>
+          <input type="range" id="seek" min="0" max="100" value="0" step="0.1" aria-label="Progresso da faixa">
+          <span id="dur">00:00</span>
+        </div>
+      </div>
+      <div class="vol">
+        <span aria-hidden="true">🔊</span>
+        <input type="range" id="vol" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+      </div>
+    </div>
+    <!-- Player de áudio para os arquivos locais em audio/... -->
+    <audio id="audio" preload="metadata"></audio>
+  </div>
+
+  <!-- Importação do arquivo JavaScript externo -->
+  <script src="script.js"></script>
 </body>
 </html>
