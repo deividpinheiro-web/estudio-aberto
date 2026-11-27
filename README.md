@@ -2,6 +2,8 @@
 
 🌐 **Acesse o sistema online:** [https://jolly-coast-0ebb7f610.4.azurestaticapps.net/](https://jolly-coast-0ebb7f610.4.azurestaticapps.net/)
 
+[![Assista ao vídeo] https://img.youtube.com/vi/Hp5qcHtxN1Y/maxresdefault.jpg][https://youtu.be/Hp5qcHtxN1Y]
+
 Sistema web do projeto cultural **Estúdio Aberto**: um estúdio móvel comunitário e gratuito que percorre bairros periféricos para gravar, mixar, masterizar e distribuir faixas de artistas independentes de trap e rap nacional.
 
 A plataforma apresenta os pilares da iniciativa, um catálogo interativo com player de áudio contínuo, o cronograma itinerante do estúdio e o passo a passo de participação.
@@ -43,4 +45,3 @@ Artistas independentes das periferias enfrentam barreiras financeiras e técnica
 | Junior Jose da Silva | `3025202159` |
 | Lucas Albergoni Mineiro | `3025107987` |
 
-[![Assista ao vídeo](https://img.youtube.com/vi/Hp5qcHtxN1Y/maxresdefault.jpg)](https://youtu.be/Hp5qcHtxN1Y)
