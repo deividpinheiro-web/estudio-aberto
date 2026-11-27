@@ -33,3 +33,12 @@ Artistas independentes das periferias enfrentam barreiras financeiras e técnica
 ├── img/                                # Fotografias otimizadas dos artistas
 ├── docs/AZURE.md                       # Documentação de implantação no Azure
 └── .github/workflows/                  # Pipeline automatizado do GitHub Actions
+
+## Equipe
+
+| Integrante | RA |
+|---|---|
+| Deivid Pinheiro da Silva Dantas | `3025200588` |
+| João Victor Ribeiro Daguis | `3025107301` |
+| Junior Jose da Silva | `3025202159` |
+| Lucas Albergoni Mineiro | `3025107987` |
