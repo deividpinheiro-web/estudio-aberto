@@ -2,7 +2,7 @@
 
 🌐 **Acesse o sistema online:** [https://jolly-coast-0ebb7f610.4.azurestaticapps.net/](https://jolly-coast-0ebb7f610.4.azurestaticapps.net/)
 
-[![Assista ao vídeo] https://img.youtube.com/vi/Hp5qcHtxN1Y/maxresdefault.jpg][https://youtu.be/Hp5qcHtxN1Y]
+[![Assista ao vídeo](https://img.youtube.com/vi/Hp5qcHtxN1Y/hqdefault.jpg)](https://youtu.be/Hp5qcHtxN1Y)
 
 Sistema web do projeto cultural **Estúdio Aberto**: um estúdio móvel comunitário e gratuito que percorre bairros periféricos para gravar, mixar, masterizar e distribuir faixas de artistas independentes de trap e rap nacional.
 
