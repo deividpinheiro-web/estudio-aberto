@@ -42,3 +42,5 @@ Artistas independentes das periferias enfrentam barreiras financeiras e técnica
 | João Victor Ribeiro Daguis | `3025107301` |
 | Junior Jose da Silva | `3025202159` |
 | Lucas Albergoni Mineiro | `3025107987` |
+
+[![Assista ao vídeo](https://img.youtube.com/vi/Hp5qcHtxN1Y/maxresdefault.jpg)](https://youtu.be/Hp5qcHtxN1Y)
